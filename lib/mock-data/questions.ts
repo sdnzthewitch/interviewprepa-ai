@@ -1,191 +1,186 @@
 import type { Question } from "../types";
 
 // ───────────────────────────────────────────────────────────────
-//  Question Bank — Mock Data
-//  In production, this would be fetched from an LLM or database
-//  filtered by the user's role, sector, and interview type.
+//  Question Bank — Mock Data (Turkish & Expanded)
 // ───────────────────────────────────────────────────────────────
 
 export const questionBank: Question[] = [
-  // ── BEHAVIORAL ──────────────────────────────────────────────
+  // ── BEHAVIORAL (Davranışsal) ──────────────────────────────────
   {
     id: "b-001",
-    text: "Tell me about a time you had to influence someone without direct authority.",
+    text: "Doğrudan yetkiniz olmayan birini ikna etmeniz veya yönlendirmeniz gereken bir zamanı anlatır mısınız?",
     category: "behavioral",
     difficulty: "intermediate",
     whyAsked:
-      "Interviewers use this to assess your communication, persuasion, and interpersonal skills — especially important in cross-functional roles.",
+      "Mülakatçılar bunu, özellikle çapraz fonksiyonlu (cross-functional) rollerde hayati olan iletişim, ikna ve kişilerarası becerilerinizi ölçmek için kullanır.",
     structureTip:
-      "Use the STAR format: Situation → Task → Action → Result. Keep it under 90 seconds. Lead with the outcome, not the backstory.",
+      "STAR formatını kullanın: Durum → Görev → Aksiyon → Sonuç. 90 saniyenin altında tutun. Olayın arka planıyla değil, elde ettiğiniz sonuçla söze başlayın.",
     exampleAnswer:
-      "During my final year project, a team member was resistant to changing our database design. I scheduled a one-on-one to understand their concern, then reframed the change in terms of how it would reduce their workload. They agreed, and we delivered the project two days early.",
+      "Son sınıf projemizde, bir ekip arkadaşım veritabanı mimarisini değiştirmeye direniyordu. Endişesini anlamak için birebir bir toplantı ayarladım ve bu değişikliğin onun iş yükünü nasıl azaltacağını göstererek durumu yeniden çerçeveledim. Kabul etti ve projeyi iki gün erken teslim ettik.",
     coachNote:
-      "For a phone interview, lead with one sentence summary of what happened, then your actions, then the result. Don't spend more than 20 seconds on context.",
-    tags: ["communication", "influence", "leadership", "teamwork"],
+      "Telefon mülakatıysa, ne olduğuna dair tek cümlelik bir özetle başlayın, aksiyonlarınızı ve sonucu ekleyin. Bağlamı (Situation) 20 saniyeden uzun tutmayın.",
+    tags: ["iletişim", "ikna", "liderlik", "ekip çalışması"],
   },
   {
     id: "b-002",
-    text: "Describe a situation where you failed and what you learned from it.",
+    text: "Başarısız olduğunuz bir durumu ve bundan ne öğrendiğinizi anlatın.",
     category: "behavioral",
     difficulty: "intermediate",
     whyAsked:
-      "This question measures self-awareness, resilience, and growth mindset — qualities that separate strong candidates from weak ones.",
+      "Bu soru, güçlü adayları zayıflardan ayıran öz farkındalığı, dayanıklılığı ve gelişim odaklı zihniyeti ölçer.",
     structureTip:
-      "Pick a real failure, not a disguised success. State the failure clearly, own it, then spend most of your time on the lesson and what you changed.",
+      "Başarı kılığına girmiş bir sahte başarısızlık seçmeyin (örn. 'çok çalışırım'). Gerçek bir başarısızlık veya hata seçin, sorumluluğu üstlenin ve zamanınızın çoğunu aldığınız derse ayırın.",
     exampleAnswer:
-      "I underestimated the complexity of a feature and gave an optimistic estimate to my manager. The deadline passed and I hadn't communicated the risk early enough. I learned to flag scope uncertainty by day two, not day seven.",
+      "Bir özelliğin karmaşıklığını hafife aldım ve yöneticime iyimser bir teslimat süresi verdim. Son tarih geçtiğinde riskleri yeterince erken iletmemiştim. Artık kapsamla ilgili belirsizlikleri 7. gün yerine 2. gün raporlamam gerektiğini öğrendim.",
     coachNote:
-      "Avoid 'I worked too hard' or 'I cared too much.' Interviewers have heard those before. Pick something real. A small real failure handled well is far more impressive.",
-    tags: ["self-awareness", "growth", "adaptability"],
+      "'Çok çalıştım' veya 'çok fazla umursadım' demekten kaçının. Mülakatçılar bunları hep duyar. Gerçek ama iyi yönetilmiş küçük bir hata, çok daha etkileyicidir.",
+    tags: ["öz-farkındalık", "gelişim", "adaptasyon"],
   },
   {
     id: "b-003",
-    text: "Give me an example of how you've handled a high-pressure deadline.",
+    text: "Yüksek baskı altındaki bir teslim tarihini (deadline) nasıl yönettiğinize dair bir örnek verin.",
     category: "behavioral",
     difficulty: "beginner",
     whyAsked:
-      "Tests your composure, prioritisation skills, and whether you can deliver under realistic work conditions.",
+      "Stres altındaki sakinliğinizi, önceliklendirme becerilerinizi ve gerçekçi iş koşulları altında teslimat yapıp yapamayacağınızı test eder.",
     structureTip:
-      "Focus on the specific steps you took to manage your time and workload — not just that you 'worked hard.' Mention what you cut or delegated.",
+      "Sadece 'çok çalıştığınızı' söylemek yerine, zamanınızı ve iş yükünüzü yönetmek için attığınız spesifik adımlara odaklanın. Neleri elediğinizi veya devrettiğinizi belirtin.",
     exampleAnswer:
-      "Before my university dissertation deadline, I had two other exams in the same week. I mapped out each task, cut non-essential reading, and blocked off mornings for deep work. I submitted on time and scored 76%.",
+      "Bitirme tezi teslimimden önceki hafta iki önemli sınavım daha vardı. Her görevi haritalandırdım, acil olmayan okumaları eledim ve sabahları sadece derin çalışma (deep work) için bloke ettim. Tezimi zamanında verdim ve iyi bir derece aldım.",
     coachNote:
-      "Don't just say 'I stayed up all night.' Show that you had a method. Hiring managers want to see systematic thinking, not heroics.",
-    tags: ["time-management", "pressure", "prioritisation"],
-  },
-  {
-    id: "b-004",
-    text: "Tell me about a time you worked with someone very different from yourself.",
-    category: "behavioral",
-    difficulty: "beginner",
-    whyAsked:
-      "Assesses your collaboration skills, empathy, and ability to work effectively in diverse teams.",
-    structureTip:
-      "Be specific about what was different (working style, background, perspective) and what you did to bridge the gap. Results matter.",
-    exampleAnswer:
-      "My project partner preferred brainstorming out loud while I work better with written briefs. I suggested we combine both: a short 10-minute verbal brainstorm followed by a written summary. Our output improved significantly.",
-    coachNote:
-      "Avoid framing the other person as the problem. The strongest answers show that you adapted — not that you tolerated someone difficult.",
-    tags: ["collaboration", "diversity", "empathy"],
+      "Sadece 'Bütün gece uyumadım' demeyin. Bir metodunuz olduğunu gösterin. Yöneticiler kahramanlık değil, sistematik bir yaklaşım görmek ister.",
+    tags: ["zaman yönetimi", "baskı", "önceliklendirme"],
   },
 
-  // ── MOTIVATION ──────────────────────────────────────────────
+  // ── MOTIVATION (Motivasyon) ───────────────────────────────────
   {
     id: "m-001",
-    text: "Why do you want to work at this company specifically?",
+    text: "Neden özellikle bizim şirketimizde çalışmak istiyorsunuz?",
     category: "motivation",
     difficulty: "beginner",
     whyAsked:
-      "Interviewers are testing whether you've done your research and genuinely want this role — or whether you're sending out mass applications.",
+      "Gerçekten araştırma yapıp yapmadığınızı ve rastgele başvuru mu yoksa bilinçli bir tercih mi yaptığınızı test eder.",
     structureTip:
-      "Reference specific things: a product, a mission statement, a recent company move, or someone whose work you admire. Generic answers fail this question.",
+      "Spesifik referanslar verin: Bir ürün, bir misyon beyanı, yeni teknolojik geçişleri veya vizyonları. 'Şirketiniz çok büyük ve başarılı' gibi jenerik cevaplar burada başarısız olur.",
     exampleAnswer:
-      "I've been following your shift to open-source infrastructure for the past year. The decision to make your API freely accessible reflects a customer-first philosophy I genuinely respect, and it's part of why I want to contribute here.",
+      "Geçen yıl açık kaynaklı altyapıya geçişinizi yakından takip ettim. API'nizi herkesin erişimine açma kararınız, gerçekten saygı duyduğum 'müşteri odaklı' bir felsefeyi yansıtıyor ve vizyonunuzun bir parçası olmak istememin ana nedeni bu.",
     coachNote:
-      "If you don't have a company name yet, prepare a framework: (1) what the company is doing that's interesting, (2) how it connects to your skills, (3) how the role supports your 2-year goal.",
-    tags: ["motivation", "research", "culture-fit"],
+      "Henüz belirli bir şirket seçmediyseniz, şu formülü hazırlayın: 1- Şirketin yaptığı ilginç bir hareket. 2- Sizin yeteneklerinizle olan bağı. 3- Pozisyonun hedeflerinizi nasıl desteklediği.",
+    tags: ["motivasyon", "araştırma", "kültürel-uyum"],
   },
   {
     id: "m-002",
-    text: "Where do you see yourself in three years?",
+    text: "Kendinizi üç yıl içinde nerede görüyorsunuz?",
     category: "motivation",
     difficulty: "beginner",
     whyAsked:
-      "Tests whether your ambitions align with the role's growth path and whether you're thinking about the future thoughtfully.",
+      "Hedeflerinizin pozisyonun büyüme yoluyla örtüşüp örtüşmediğini ve geleceğiniz hakkında vizyoner düşünüp düşünmediğinizi test eder.",
     structureTip:
-      "Anchor your answer in skills you want to develop, not just job titles. Connect your growth to something this company can actually offer.",
+      "Sadece unvanlara değil, kazanmak istediğiniz yetkinliklere dayanın. Gelişiminizi, şirketin gerçekten sunabileceği bir şeye bağlayın.",
     exampleAnswer:
-      "In three years, I want to be someone who's led at least one meaningful product initiative from kickoff to launch. I want to develop stronger stakeholder communication and data analysis skills. I see this role as the foundation for that.",
+      "Üç yıl içinde, baştan sona en az bir kritik ürün inisiyatifine liderlik etmiş biri olmak istiyorum. Paydaş iletişimi ve veri analizi konularında kendimi daha da geliştirmeyi hedefliyorum. Bu pozisyonu, söz konusu vizyonun temeli olarak görüyorum.",
     coachNote:
-      "Don't say 'in your role' — it sounds like you want their job. Don't say 'running a company' — it sounds disconnected. Stay specific to skills and contributions.",
-    tags: ["growth", "ambition", "alignment"],
+      "'Kendi işimi kuracağım' veya çok alakasız hedeflerden kaçının. Sektördeki dikey büyümenize odaklanın.",
+    tags: ["büyüme", "vizyon", "uyum"],
   },
 
-  // ── ROLE-SPECIFIC ────────────────────────────────────────────
+  // ── ROLE-SPECIFIC / SITUATIONAL (Durumsal) ────────────────────
   {
     id: "r-001",
-    text: "How do you prioritise competing tasks when everything feels urgent?",
+    text: "Her şeyin acil göründüğü bir anda, birbiriyle yarışan görevleri nasıl önceliklendirirsiniz?",
     category: "role-specific",
     difficulty: "intermediate",
     whyAsked:
-      "Essential for any role involving multiple stakeholders or projects. Tests your decision-making framework, not just your energy.",
+      "Birden fazla paydaşı olan her rol için kritik bir sorudur. Sadece eforunuzu değil, karar alma çerçevenizi test eder.",
     structureTip:
-      "Name a specific method you use (e.g., impact vs effort, deadlines + stakeholder weight, Eisenhower matrix). Then give an example of it in action.",
+      "Kullandığınız belirli bir yöntemi söyleyin (örn. etki vs efor, Eisenhower matrisi veya başkasını engelleyen görev). Ardından gerçek bir örnekle bunu gösterin.",
     exampleAnswer:
-      "I use a simple two-step filter: first, what's time-locked vs what's flexible. Then, which task blocks someone else from moving forward. That usually narrows it to one clear priority. I re-evaluate twice a day.",
+      "Basit bir iki aşamalı filtre kullanırım: Önce zaman kısıtlaması kesin olanlarla esnek olanları ayırırım. Sonra, hangi görevin bir başkasının işini bloke ettiğine (darboğaz yaratıp yaratmadığına) bakarım. Bu genellikle bana net bir öncelik verir.",
     coachNote:
-      "The best answers name a system and then prove it works with a real example. If you don't have a go-to method, develop one before your interview. Interviewers will press you on this.",
-    tags: ["prioritisation", "organisation", "self-management"],
+      "En iyi cevaplar spesifik bir metodoloji dillendirir. Sistematik bir yaklaşımınız olduğunu hissettirin.",
+    tags: ["önceliklendirme", "organizasyon"],
   },
-  {
-    id: "r-002",
-    text: "How do you approach learning a new tool or technology quickly?",
-    category: "role-specific",
-    difficulty: "beginner",
-    whyAsked:
-      "Common in fast-moving industries. Interviewers want to see that you're self-directed and can ramp up without constant hand-holding.",
-    structureTip:
-      "Describe a repeatable process: where you go first, how you practice, how you know you've learned it. Use a real example of something you learned quickly.",
-    exampleAnswer:
-      "I start with the official documentation to understand the mental model, then build a small project to test what I don't understand. When I learned Figma last year in one week, that approach let me go from zero to producing client-ready mockups.",
-    coachNote:
-      "The key phrase to include: 'I learn by building, not by reading.' It signals initiative. Back it up with a concrete example.",
-    tags: ["learning", "adaptability", "technical"],
-  },
-
-  // ── SITUATIONAL ──────────────────────────────────────────────
   {
     id: "s-001",
-    text: "If a colleague significantly underperforms on a shared project, what would you do?",
+    text: "Bir ekip arkadaşınız ortak projede performans göstermez ve işini aksatırsa nasıl davranırsınız?",
     category: "situational",
     difficulty: "intermediate",
     whyAsked:
-      "Tests your professionalism, conflict-handling maturity, and whether you'd escalate sensibly or let things fester.",
+      "Profesyonelliğinizi, çatışma çözme olgunluğunu ve dedikodu yerine rasyonel süreçleri izleyip izlemediğinizi ölçer.",
     structureTip:
-      "Show that you'd address it directly but constructively — not behind their back, not aggressively. Structure: direct conversation → offer help → involve manager only if needed.",
+      "Asla doğrudan yöneticiye şikayet edeceğinizi söylemeyin; önce doğrudan iletişim, sonra yardım teklifi, en son çare olarak eskalasyon.",
     exampleAnswer:
-      "I'd have a private, direct conversation with them first, focusing on the impact rather than the blame: 'I noticed this section hasn't moved — is there something blocking you that I can help with?' If that didn't change things, I'd loop in the project lead.",
+      "Öncelikle durumu şahsileştirmeden birebir, özel bir konuşma yaparım. 'Bu kısmın ilerlemediğini fark ettim, takıldığın veya yardımcı olabileceğim bir şey var mı?' derim. Sorun çözülmez ve projenin kaderini etkilemeye devam ederse proje liderini durumdan haberdar ederim.",
     coachNote:
-      "Never say you'd go straight to a manager — it signals you lack interpersonal confidence. But also don't say you'd handle everything yourself indefinitely. Show a sensible escalation path.",
-    tags: ["conflict", "teamwork", "professionalism"],
-  },
-  {
-    id: "s-002",
-    text: "You're given a project with an unclear brief. How do you get started?",
-    category: "situational",
-    difficulty: "intermediate",
-    whyAsked:
-      "Tests your initiative, communication style, and comfort with ambiguity — critical in most professional environments.",
-    structureTip:
-      "Show that you clarify before executing, not instead of executing. Name the specific questions you'd ask, then describe your first concrete step.",
-    exampleAnswer:
-      "I'd start by writing down my current interpretation of the goal, then schedule a 15-minute call to validate it. I'd ask three things: what does success look like, what are the must-haves vs nice-to-haves, and who are the decision-makers. Then I'd start a scoped first draft.",
-    coachNote:
-      "The phrase 'I'd ask clarifying questions' alone is not enough. Name the actual questions. That's what separates strong answers from vague ones.",
-    tags: ["ambiguity", "initiative", "communication"],
+      "Kişilerarası iletişimdeki özgüveninizi gösterin. İş bitiricilik kadar takım psikolojisini yönetmek de kritiktir.",
+    tags: ["çatışma", "ekip çalışması", "profesyonellik"],
   },
 
-  // ── TECHNICAL (general) ─────────────────────────────────────
+  // ── TECHNICAL (Sıkı Teknik Sorular) ───────────────────────────
   {
     id: "t-001",
-    text: "Walk me through a project you're proud of and the technical decisions you made.",
+    text: "Mimarisini kurgularken gurur duyduğun bir projeyi ve yapmak zorunda kaldığın teknik 'trade-off'ları (ödünleşimleri) anlatır mısın?",
+    category: "technical",
+    difficulty: "advanced",
+    whyAsked:
+      "Teknik derinliğinizi, kararlarınızı kelimelere dökme yeteneğinizi ve mimari tasarım vizyonunuzu test eder. 'Sadece kodu yazıp çıkan' birisi olup olmadığınızı belirler.",
+    structureTip:
+      "Gerçekten seçim yapmak zorunda kaldığınız bir anı seçin (örn. NoSQL vs SQL, SSR vs CSR, Microservices vs Monolith). Kısıtlamaları, neden o yolu seçtiğinizi ve şimdi olsa neyi farklı yapacağınızı detaylandırın.",
+    exampleAnswer:
+      "Bir veri görselleştirme projesinde, canlı veriyi doğrudan her seferinde API'den mi çekeceğim yoksa önbelleğe (cache) mi alacağım konusunda bir karar vermem gerekti. Anlık doğruluk istesem de limitlere takılmamak için 5 dakikalık TTL (Time to Live) ile bir Redis cache kurguladım. İlk başta veri tazeliğinden (freshness) ödün vermiş oldum ama sistem çökmelerini %100 engelledim.",
+    coachNote:
+      "Sadece ne kullandığınızı (teknoloji yığınını) sayıp durmayın. Mülakatçı bu teknolojiyi 'neden' seçtiğinizi veya hangi alternatifleri neden elediğinizi duymak ister.",
+    tags: ["teknik", "mimari", "karar-verme", "trade-off"],
+  },
+  {
+    id: "t-002",
+    text: "Bir web uygulamasında sayfa yüklenme (page load) süresi çok uzun ve kullanıcılar şikayet ediyor. Performansı iyileştirmek için süreci nasıl analiz eder ve hangi adımları izlersin?",
+    category: "technical",
+    difficulty: "advanced",
+    whyAsked:
+      "Sistematik hata ayıklama (debugging) sürecini ve web performans optimizasyonu hakkındaki gerçek donanımınızı ölçmek içindir.",
+    structureTip:
+      "Doğrudan 'resimleri küçültürüm' demek yerine, sorunu önce network panelinde / Lighthouse'da analiz edeceğinizi söyleyerek sistematik ilerlediğinizi kanıtlayın. Darboğazı frontend (bundle size vs) veya backend (yavaş sorgular) olarak ayırın.",
+    exampleAnswer:
+      "Öncelikle Chrome DevTools (Network ve Performance) veya Lighthouse kullanarak darboğazın nerede olduğunu ölçerim. Eğer sorun Frontend tarafındaysa; bundle boyutunu inceler, code-splitting/lazy-loading yapılıp yapılmadığına ve görsel boyutlarına bakarım. Eğer sunucu (TTFB) yavaş yanıt veriyorsa; backend veritabanı sorgularının (N+1 problemi vb.) analizine ve gerekiyorsa indekslemeye/caching stratejilerine (Redis/Memcached) yönelirim.",
+    coachNote:
+      "Harika bir cevap! Ölçmeden optimizasyon yapılmaz kuralını hissettirdin. Bu, kıdemli (senior) bir yazılımcı zihniyetini yansıtır.",
+    tags: ["optimizasyon", "performans", "debugging", "teknik"],
+  },
+  {
+    id: "t-003",
+    text: "REST API tasarlarken geriye dönük uyumluluğu (backward compatibility) korumak için nasıl bir versiyonlama stratejisi izlersin?",
+    category: "technical",
+    difficulty: "advanced",
+    whyAsked:
+      "Canlı sistemlerde mevcut kullanıcıları (mobil app'ler, dış servisler) bozmadan yenilik yapabilme vizyonunuzu test eder.",
+    structureTip:
+      "URL bazlı, header bazlı veya GraphQL approachları gibi spesifik metotlara değinin ve nedenini açıklayın.",
+    exampleAnswer:
+      "Genellikle URL bazlı (/api/v1/users) veya Accept Header üzerinden versiyonlama stratejisi tercih ederim. Mobil bir uygulama güncellenmese bile eski versiyon (v1) endpointine atılan isteklerin çalışmaya devam etmesi gerekir. Eski özellikleri hemen silmek yerine 'deprecated' ilan edip loglardan kullanımı izler, kullanım 0'a yaklaşana kadar eski versiyonu ayakta tutarım.",
+    coachNote:
+      "Deprecation sürecinden (sürekli kullanım loglarını izlediğinden) bahsetmen senin gerçekten 'canlıya alınmış' büyük ürünlerde tecrübeli olduğunu hissettirir. Şahane.",
+    tags: ["api-dizayn", "backend", "versiyonlama"],
+  },
+  {
+    id: "t-004",
+    text: "Event Loop (Olay Döngüsü) nedir ve 'Blocking the Main Thread' kavramını gerçek hayattan bir senaryoyla nasıl açıklarsın?",
     category: "technical",
     difficulty: "intermediate",
     whyAsked:
-      "Assesses your depth of technical understanding, ability to articulate decisions, and ownership of your own work.",
+      "Javascript gibi single-threaded dillerin temel çalışma mekanizmasını derinlemesine anlayıp anlamadığınızı test eder.",
     structureTip:
-      "Choose a project where you made real trade-offs. Explain the constraints, the options you considered, why you chose what you did, and what you'd do differently.",
+      "Teorik dille başlayıp hemen pratik bir hatayla örneklendirin. Call Stack, Web API ve Task Queue üçlüsünü hikayenin içine yerleştirin.",
     exampleAnswer:
-      "I built a web app to visualise public transport delays using open data. I chose Next.js for fast initial load and PostgreSQL for structured query needs. The hardest decision was whether to pull live data or cache — I cached with 5-minute refreshes to balance accuracy and API limits.",
+      "Event Loop, JavaScript'in tek iş parçacıklı (single-threaded) olmasına rağmen asenkron işlemleri yönetmesini sağlayan yapıdır. Eğer Call Stack içerisinde milyarlarca dönüşlük bir matematik hesabı yaparsam (synchronous task), bu bitene kadar tarayıcı buton tıklamalarına veya animasyonlara cevap veremez; işte bu 'ana iş parçacığını bloke etmektir'. Bunu engellemek için ağır hesaplamaları Web Workerlara taşır veya asenkron (Promise/setTimeout) işlemlere bölerim ki tarayıcı nefes alabilsin.",
     coachNote:
-      "Don't just describe what you built. The interviewer cares about the decisions you made and why. Structure: context → decision points → trade-offs → outcome → what you'd improve.",
-    tags: ["technical", "problem-solving", "ownership"],
-  },
+      "Örneğindeki 'tarayıcının nefes alabilmesi' metaforu konuyu çok iyi bildiğini gösteriyor. Röportajcının aradığı şey tam olarak bu pratik açıklamadır.",
+    tags: ["javascript", "event-loop", "performans", "front-end"],
+  }
 ];
 
 /**
  * Get questions filtered by the user's profile.
- * In production, this would call an LLM or a curated database.
  */
 export function getFilteredQuestions(
   role: string,
@@ -193,14 +188,14 @@ export function getFilteredQuestions(
   interviewType: string,
   count = 6
 ): Question[] {
-  // For demo, return a curated mix based on interview type
+  // Daha dinamik bir filtreleme stratejisi
   const priorityMap: Record<string, string[]> = {
-    behavioral: ["b-001", "b-002", "b-003", "b-004", "m-001", "s-001"],
-    technical: ["t-001", "r-002", "r-001", "b-002", "b-001", "s-002"],
-    "case-study": ["r-001", "s-001", "s-002", "b-002", "m-001", "t-001"],
-    mixed: ["b-001", "m-001", "r-001", "s-001", "t-001", "b-002"],
-    phone: ["b-003", "m-001", "b-001", "r-001", "b-002", "m-002"],
-    panel: ["b-001", "b-002", "m-001", "s-001", "r-001", "t-001"],
+    behavioral: ["b-001", "b-002", "b-003", "s-001", "m-001", "m-002"],
+    technical: ["t-001", "t-002", "t-003", "t-004", "r-001", "b-002"],
+    "case-study": ["r-001", "s-001", "t-002", "b-002", "m-001", "t-001"],
+    mixed: ["b-001", "t-001", "r-001", "s-001", "m-001", "b-003"],
+    phone: ["m-001", "m-002", "b-003", "b-001", "s-001", "r-001"],
+    panel: ["b-001", "b-002", "t-001", "s-001", "r-001", "t-003"],
   };
 
   const ids = priorityMap[interviewType] ?? priorityMap["mixed"];

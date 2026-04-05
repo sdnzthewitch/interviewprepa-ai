@@ -29,129 +29,126 @@ type Step = {
 const steps: Step[] = [
   {
     id: "userType",
-    question: "Which best describes you right now?",
-    subtext: "We use this to personalize your coaching advice.",
+    question: "Şu anki durumunuzu en iyi hangisi tanımlıyor?",
+    subtext: "Bu bilgiyi mülakat koçluğunu kişiselleştirmek için kullanıyoruz.",
     field: "userType",
     type: "choice",
     options: [
-      { value: "student", label: "Student", description: "Still studying, preparing for my first professional role" },
-      { value: "new-graduate", label: "New graduate", description: "Recently graduated, entering the job market" },
-      { value: "young-professional", label: "Young professional", description: "Working, targeting a new role or promotion" },
-      { value: "career-switcher", label: "Career switcher", description: "Moving into a different sector or function" },
+      { value: "student", label: "Öğrenci", description: "Hala okuyorum, ilk profesyonel rolüme hazırlanıyorum" },
+      { value: "new-graduate", label: "Yeni Mezun", description: "Yeni mezun oldum, iş pazarına giriyorum" },
+      { value: "young-professional", label: "Genç Profesyonel", description: "Çalışıyorum, yeni bir rol veya terfi hedefliyorum" },
+      { value: "career-switcher", label: "Kariyer Değiştiren", description: "Farklı bir sektöre veya fonksiyona geçiş yapıyorum" },
     ],
   },
   {
     id: "targetRole",
-    question: "What role are you interviewing for?",
-    subtext: "Be specific — e.g. 'Product Manager', 'Software Engineer', 'Marketing Analyst'",
+    question: "Hangi pozisyon için mülakata hazırlanıyorsun?",
+    subtext: "Spesifik olun — örn. 'Ürün Yöneticisi', 'Yazılım Mühendisi', 'Pazarlama Uzmanı'",
     field: "targetRole",
     type: "text",
   },
   {
     id: "sector",
-    question: "Which sector is your target company in?",
-    subtext: "This shapes which questions and coaching style we use.",
+    question: "Hedeflediğiniz şirket hangi sektörde faaliyet gösteriyor?",
+    subtext: "Bu durum karşınıza çıkacak soruları ve koçluk stilimizi şekillendirecek.",
     field: "sector",
     type: "choice",
     options: [
-      { value: "technology", label: "Technology" },
-      { value: "finance", label: "Finance & Banking" },
-      { value: "consulting", label: "Consulting" },
-      { value: "healthcare", label: "Healthcare" },
-      { value: "marketing", label: "Marketing & Media" },
-      { value: "operations", label: "Operations & Supply Chain" },
-      { value: "public-sector", label: "Public sector / NGO" },
-      { value: "other", label: "Other" },
+      { value: "technology", label: "Teknoloji" },
+      { value: "finance", label: "Finans & Bankacılık" },
+      { value: "consulting", label: "Danışmanlık" },
+      { value: "healthcare", label: "Sağlık" },
+      { value: "marketing", label: "Pazarlama & Medya" },
+      { value: "operations", label: "Operasyon & Tedarik Zinciri" },
+      { value: "public-sector", label: "Kamu / STK" },
+      { value: "other", label: "Diğer" },
     ],
   },
   {
     id: "interviewType",
-    question: "What type of interview are you preparing for?",
-    subtext: "Different formats require different preparation strategies.",
+    question: "Ne tür bir mülakata hazırlanıyorsunuz?",
+    subtext: "Farklı formatlar farklı hazırlık stratejileri gerektirir.",
     field: "interviewType",
     type: "choice",
     options: [
-      { value: "behavioral", label: "Behavioral", description: "Competency questions, STAR format" },
-      { value: "technical", label: "Technical", description: "Coding, case work, or domain knowledge" },
-      { value: "case-study", label: "Case study", description: "Business problem-solving" },
-      { value: "phone", label: "Phone interview", description: "First-stage screening call" },
-      { value: "panel", label: "Panel interview", description: "Multiple interviewers at once" },
-      { value: "mixed", label: "Mixed — I'm not sure", description: "Contains several types" },
+      { value: "behavioral", label: "Davranışsal (Behavioral)", description: "Yetkinlik bazlı sorular, STAR formatı" },
+      { value: "technical", label: "Teknik Mülakat", description: "Kodlama, vaka veya alan bilgisi testi" },
+      { value: "case-study", label: "Vaka Çalışması (Case)", description: "Problemlere rasyonel çözümler üretme" },
+      { value: "phone", label: "Telefon Mülakatı", description: "İlk aşama ön görüşme (screening)" },
+      { value: "panel", label: "Panel Mülakatı", description: "Aynı anda birden fazla mülakatçı" },
+      { value: "mixed", label: "Karışık — Emin değilim", description: "Tüm türlerden parça parça olabilir" },
     ],
   },
   {
     id: "prepLanguage",
-    question: "Which language will your interview be in?",
+    question: "Mülakatınız hangi dilde gerçekleşecek?",
     field: "prepLanguage",
     type: "choice",
     options: [
-      { value: "english", label: "English" },
-      { value: "turkish", label: "Turkish" },
-      { value: "french", label: "French" },
-      { value: "spanish", label: "Spanish" },
-      { value: "german", label: "German" },
-      { value: "arabic", label: "Arabic" },
-      { value: "other", label: "Another language" },
+      { value: "turkish", label: "Türkçe" },
+      { value: "english", label: "İngilizce" },
+      { value: "german", label: "Almanca" },
+      { value: "other", label: "Diğer" },
     ],
   },
   {
     id: "englishLevel",
-    question: "What is your English proficiency level?",
-    subtext: "This helps us adjust coaching advice for communication clarity.",
+    question: "İngilizce yetkinlik seviyeniz nedir?",
+    subtext: "Bu bilgi, İngilizce mülakatlarda koçluk desteğini ayarlamamızı sağlar.",
     field: "englishLevel",
     type: "choice",
     options: [
-      { value: "native", label: "Native or bilingual" },
-      { value: "advanced", label: "Advanced (C1/C2)" },
-      { value: "intermediate", label: "Intermediate (B1/B2)" },
-      { value: "beginner", label: "Basic (A1/A2)" },
+      { value: "native", label: "Anadil veya İki Dilli" },
+      { value: "advanced", label: "İleri Seviye (C1/C2)" },
+      { value: "intermediate", label: "Orta Seviye (B1/B2)" },
+      { value: "beginner", label: "Başlangıç (A1/A2)" },
     ],
   },
   {
     id: "biggestChallenge",
-    question: "What is your biggest challenge when interviewing?",
-    subtext: "Be honest — this shapes your coaching.",
+    question: "Mülakatlarda karşılaştığınız en büyük zorluk nedir?",
+    subtext: "Dürüst olun — mentörlüğünüz doğrudan buna göre şekillenecek.",
     field: "biggestChallenge",
     type: "choice",
     options: [
-      { value: "structuring-answers", label: "Structuring my answers" },
-      { value: "nerves", label: "Managing nerves and confidence" },
-      { value: "english-communication", label: "Communicating clearly in English" },
-      { value: "no-experience", label: "Not having enough experience to draw from" },
-      { value: "specific-examples", label: "Finding specific, strong examples" },
-      { value: "technical-knowledge", label: "Technical knowledge gaps" },
+      { value: "structuring-answers", label: "Cevaplarımı doğru şekilde yapılandırmak" },
+      { value: "nerves", label: "Heyecanımı yönetmek ve özgüven" },
+      { value: "english-communication", label: "İngilizceyi akıcı iletişimde kullanmak" },
+      { value: "no-experience", label: "Bahsedecek yeterince profesyonel tecrübem olmaması" },
+      { value: "specific-examples", label: "Geçmişten spesifik ve güçlü örnekler bulamamak" },
+      { value: "technical-knowledge", label: "Teknik bilgi eksiklikleri ve algoritma / vaka soruları" },
     ],
   },
   {
     id: "urgency",
-    question: "When is your interview?",
-    subtext: "This affects how your daily preparation plan is structured.",
+    question: "Mülakatınız ortalama ne zaman?",
+    subtext: "Hazırlık planınızı belirlerken tempomuzu hızlandırıp yavaşlatmamızı sağlayacak.",
     field: "urgency",
     type: "choice",
     options: [
-      { value: "this-week", label: "This week", description: "Urgent — I need to focus now" },
-      { value: "this-month", label: "This month", description: "I have a few weeks to prepare" },
-      { value: "next-month", label: "Next month or later", description: "Building over time" },
-      { value: "exploring", label: "Just exploring", description: "No specific interview yet" },
+      { value: "this-week", label: "Bu Hafta", description: "Çok acil — hemen ana noktaları toparlamam gerek" },
+      { value: "this-month", label: "Bu Ay", description: "Hazırlanmak ve derinleşmek için birkaç haftam var" },
+      { value: "next-month", label: "Gelecek Ay veya Daha Sonra", description: "Acelem yok, uzun vadeye yayabilirim" },
+      { value: "exploring", label: "Sadece Araştırıyorum", description: "Şu an planlanmış net bir mülakatım yok" },
     ],
   },
   {
     id: "companyType",
-    question: "What type of company are you targeting?",
+    question: "Ne tür bir şirket hedefliyorsunuz?",
     field: "companyType",
     type: "choice",
     options: [
       { value: "startup", label: "Startup" },
-      { value: "scale-up", label: "Scale-up / growth stage" },
-      { value: "corporate", label: "Large corporate" },
-      { value: "public-sector", label: "Public sector" },
-      { value: "consulting", label: "Consulting firm" },
+      { value: "scale-up", label: "Scale-up / Büyüme aşamasında" },
+      { value: "corporate", label: "Büyük Kurumsal Şirket" },
+      { value: "public-sector", label: "Kamu Sektörü" },
+      { value: "consulting", label: "Danışmanlık Firması" },
     ],
   },
   {
     id: "companyName",
-    question: "Which company are you interviewing at? (optional)",
-    subtext: "We'll reference this in your prep plan if you share it.",
+    question: "Şu anda görüşmekte olduğunuz mülakat şirketi hangisi? (İsteğe bağlı)",
+    subtext: "Bizimle paylaşırsanız koçluk profillerinde bu veriyi dikkate alabiliriz.",
     field: "companyName",
     type: "text",
     optional: true,
@@ -176,7 +173,6 @@ export default function OnboardingWizard() {
   }
 
   function handleNext() {
-    // For text fields, save the input before advancing
     if (step.type === "text") {
       if (!textInput.trim() && !step.optional) return;
       setAnswers((prev) => ({
@@ -201,7 +197,6 @@ export default function OnboardingWizard() {
   function handleBack() {
     if (currentStep > 0) {
       setCurrentStep((s) => s - 1);
-      // Restore text input if stepping back to a text field
       const prevStep = steps[currentStep - 1];
       if (prevStep.type === "text") {
         setTextInput((answers[prevStep.field] as string) ?? "");
@@ -226,7 +221,7 @@ export default function OnboardingWizard() {
             Interview Prep AI
           </Link>
           <span className="text-sm text-muted-foreground">
-            Step {currentStep + 1} of {total}
+            Adım {currentStep + 1} / {total}
           </span>
         </div>
 
@@ -251,7 +246,7 @@ export default function OnboardingWizard() {
               {step.question}
             </h1>
             {step.subtext && (
-              <p className="text-muted-foreground">{step.subtext}</p>
+               <p className="text-muted-foreground">{step.subtext}</p>
             )}
           </div>
 
@@ -285,7 +280,7 @@ export default function OnboardingWizard() {
                       </div>
                       <div>
                         <p className={`font-medium text-sm ${selected ? "text-foreground" : "text-foreground/80"}`}>
-                          {opt.label}
+                           {opt.label}
                         </p>
                         {opt.description && (
                           <p className="text-xs text-muted-foreground mt-0.5">
@@ -313,15 +308,15 @@ export default function OnboardingWizard() {
                 }}
                 placeholder={
                   step.optional
-                    ? "Optional — skip if you prefer"
-                    : "Type your answer..."
+                    ? "İsteğe bağlı — atlayabilirsiniz"
+                    : "Cevabınızı yazın..."
                 }
                 className="w-full px-5 py-4 bg-card border border-border rounded-2xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 text-lg transition-colors"
                 autoFocus
               />
               {step.optional && (
                 <p className="mt-2 text-xs text-muted-foreground">
-                  This field is optional. Press Continue to skip.
+                  Bu alan isteğe bağlıdır. Doğrudan 'Devam Et'e tıklayıp geçebilirsiniz.
                 </p>
               )}
             </div>
@@ -335,7 +330,7 @@ export default function OnboardingWizard() {
               className="flex items-center gap-2 px-5 py-3 text-sm text-muted-foreground hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors rounded-xl hover:bg-white/5"
             >
               <ArrowLeft size={16} />
-              Back
+              Geri Dön
             </button>
 
             <button
@@ -347,11 +342,11 @@ export default function OnboardingWizard() {
               {isLast ? (
                 <>
                   <CheckCircle2 size={16} />
-                  Build my dashboard
+                  Panelimi Oluştur
                 </>
               ) : (
                 <>
-                  Continue
+                  Devam Et
                   <ArrowRight size={16} />
                 </>
               )}

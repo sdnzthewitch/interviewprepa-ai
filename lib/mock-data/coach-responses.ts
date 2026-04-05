@@ -149,47 +149,74 @@ export function getMockCoachFeedback(
   answerDraft: string,
   profile: UserProfile
 ): string {
+  const inputLower = answerDraft.toLowerCase();
+  
+  // Keyword based intents for AI Chatbot feel
+  if (inputLower.includes("merhaba") || inputLower.includes("selam")) {
+    return `Merhaba! Hazırlık sürecinde sana destek olmak için buradayım. Bugün hangi konuya odaklanmak istersin? Belirli bir soru üzerinden pratik yapabiliriz, bana bir mülakat sorusuna verdiğin cevabı atabilirsin veya genel süreç yönetimi üzerine konuşabiliriz.`;
+  }
+
+  if (inputLower.includes("teknik soru") || inputLower.includes("zor bir soru sor")) {
+    if (profile.sector === "technology" || profile.interviewType === "technical") {
+      return `Harika. Hadi seni biraz zorlayalım. Farz edelim ki yüksek trafikli (high-traffic) bir e-ticaret sitesi için sipariş sistemi tasarlıyorsun. "Kara Cuma" (Black Friday) gibi aşırı yük altında sistemin çökmemesi ve veritabanı kilitlenmesi (lock) yaşamamak için mimaride hangi pattern'leri (kuyruk yapıları, caching, microservices) kullanırdın?\n\nBu soruya nasıl yaklaşacağını adım adım anlatır mısın?`;
+    } else {
+      return `Tabii! Kendi alanın üzerine bir soru sorayım. Farz edelim ki yöneticin senden tamamen yeni bir strateji kurmanı istedi ama bütçen %40 kısıtlandı. \n\nBu senaryoda projenin teknik adımlarını, önceliklendirme stratejini ve paydaş iletişimini nasıl yönetirsin? Yanıtını STAR formatında yapılandırmanı bekliyorum.`;
+    }
+  }
+
+  if (inputLower.includes("davranışsal") || inputLower.includes("soru sor")) {
+    return `Peki, en sık elenilen sorulardan biriyle başlayalım:\n\n"Bana iş hayatınızda aldığınız çok ciddi bir eleştiriyi ve bu eleştiri karşısında ne yaptığınızı anlatın."\n\nBu sorudaki amacım eleştiriyi alıp alamadığını değil, profesyonel egonu nasıl yönettiğini görmek. Cevabını buraya yazabilirsin, nasıl daha güçlü bir hale getirebileceğimizi birlikte inceleyelim.`;
+  }
+
+  if (inputLower.length < 20 && !inputLower.includes("soru")) {
+    return `Söylediğin şeyi anlıyorum ancak mülakat formatında buna bir cevap verebilmem veya geri bildirim oluşturabilmem için cümleni biraz daha açman gerekiyor. Bana pratik yapmak istediğin konuyu ya da doğrudan bir "cevap taslağını" yazabilirsin.`;
+  }
+
   const words = answerDraft.trim().split(/\s+/).filter(Boolean);
   const wordCount = words.length;
   const isLong = wordCount > 130;
   const isShort = wordCount < 25;
   const hasResult =
-    answerDraft.toLowerCase().includes("result") ||
-    answerDraft.toLowerCase().includes("outcome") ||
-    answerDraft.toLowerCase().includes("led to") ||
-    answerDraft.toLowerCase().includes("sonuç") ||
-    answerDraft.toLowerCase().includes("başar") ||
-    answerDraft.toLowerCase().includes("elde et");
+    inputLower.includes("result") ||
+    inputLower.includes("outcome") ||
+    inputLower.includes("led to") ||
+    inputLower.includes("sonuç") ||
+    inputLower.includes("başarı") ||
+    inputLower.includes("elde ett") ||
+    inputLower.includes("kazandırd") ||
+    inputLower.includes("düştü") ||
+    inputLower.includes("arttı");
   const hasAction =
-    answerDraft.toLowerCase().includes(" i ") ||
-    answerDraft.toLowerCase().includes("i decided") ||
-    answerDraft.toLowerCase().includes(" ben ") ||
-    answerDraft.toLowerCase().includes("yaptım") ||
-    answerDraft.toLowerCase().includes("çözdüm") ||
-    answerDraft.toLowerCase().includes("yaklaşımım");
+    inputLower.includes(" i ") ||
+    inputLower.includes(" ben ") ||
+    inputLower.includes("yaptım") ||
+    inputLower.includes("karar verdim") ||
+    inputLower.includes("önerdim") ||
+    inputLower.includes("çözdüm") ||
+    inputLower.includes("yaklaşımım");
 
   const { interviewType, targetRole } = profile;
   const role = targetRole || "bu rol";
 
   if (isShort) {
-    return `Taslağın yaklaşık ${wordCount} kelime. ${interviewType} formatı için rekabetçi olamayacak kadar kısa. Kısa cevaplar genellikle adayın pozisyonun gerektirdiği derinliğe inmediğine ya da söyleyecek yeterli deneyimi olmadığına işaret eder. Aksiyonunu biraz detaylandır: Spesifik sorun neydi? Sen tam olarak neye karar verdin (ekip değil, doğrudan "sen")? Olması gereken ortalama kelime uzunluğu 80-120 kelime (yani konuşurken 60-90 saniye) bandındadır.`;
+    return `Gönderdiğin taslak yaklaşık ${wordCount} kelime. ${interviewType} formatı için rekabetçi olamayacak kadar kısa. Kısa cevaplar genellikle adayın pozisyonun gerektirdiği derinliğe inmediğine ya da özgüven eksikliğine işaret eder. Aksiyonunu biraz detaylandır: Spesifik sorun neydi? Sen tam olarak neye karar verdin? Sen konuşurken ortalama 60-90 saniye (80-120 kelime) aralığını hedeflemeliyiz.`;
   }
 
   if (isLong && interviewType === "phone") {
-    return `Taslağın ~${wordCount} kelime. Telefon odaklı bir görüşme için fazla uzun. Telefon mülakatlarında görsel iletişim kısıtlı olduğundan 60 saniyeden sonra dikkat ciddi anlamda dağılır. Yapman gereken detayları atmak değil, ana fikri hızla baştan vermektir (Front-load stratejisi). Giriş kısmında bağlam anlatmayı bırakıp, eylemini ve ulaştığın sonucu net bir şekilde ifade edecek 80-100 kelimelik bir formata çekmelisin.`;
+    return `Telefon odaklı bir görüşme için ${wordCount} kelimelik bu metin fazla uzun. Telefon mülakatlarında görsel iletişim kısıtlı olduğundan 60 saniyeden sonra dikkat ciddi anlamda dağılır. Yapman gereken şey detayları atmak değil, ana fikri hızla baştan vermektir (Front-load stratejisi). 80-100 kelimeye indirip, sonucunu ilk cümle olarak sunmayı dener misin?`;
   }
 
   if (isLong) {
-    return `Bu taslak yaklaşık ${wordCount} kelime; canlı bir mülakat atmosferi için fazlasıyla uzun. Asıl sorun dinleyicinin odak kaybı yaşaması değil, en güçlü argümanlarını bu kadar yoğun bir açıklamanın içinde boğmandır. Yoğun ve hedefe odaklanmış 90 kelimelik bir yanıt, upuzun 200 kelimeden her zaman daha akılda kalıcıdır. Bu metne dön ve gereksiz "durum/bağlam" özetlerini çıkarıp, sadece kendi kritik eylemine ve o eylemin başarısına odaklan.`;
+    return `Bu taslak (${wordCount} kelime) canlı bir mülakat atmosferi için fazlasıyla uzun. En güçlü argümanlarını bu kadar yoğun bir açıklamanın içinde boğmamalısın. Odaklanmış 90 kelimelik bir yanıt, upuzun 200 kelimeden her zaman daha akılda kalıcıdır. Lütfen gereksiz "durum/bağlam" özetlerini çıkarıp bu metni yeniden yapılandır.`;
   }
 
-  if (!hasResult && interviewType === "behavioral") {
-    return `Cevabında henüz belirgin bir "soğuk gerçek", yani elde edilmiş bir "Sonuç (Result)" net olarak görünmüyor. Davranışsal mülakatlarda asıl puan alınan kısım anlattığın hikayenin nasıl bittiğidir. Süreci ne kadar iyi betimlersen betimle, eylemlerin sonucunda departmana, projeye veya sayısal metriklere ne fayda sağladığını bir cümle ile özetlemezsen cevap yarım kalır. Örneğin: "Bu süreç sonucunda, sorun kabaca %20 oranında azaldı" demek bile çok önemlidir.`;
+  if (!hasResult && (interviewType === "behavioral" || interviewType === "mixed")) {
+    return `Hikayeyi çok iyi anlatmışsın; ancak cevabında belirgin bir "Sonuç (Result)" göremiyorum. Mülakatçı bu çabanın projeye, ekibe veya ciroya nasıl bir katkısı olduğunu net olarak duymak ister. Lütfen metnin sonuna, aldığın eylemin nasıl bir "sayısal" veya "somut" başarı doğurduğunu bir iki cümle ile ekle.`;
   }
 
   if (!hasAction) {
-    return `Taslağın yaşanan durumu anlatıyor ancak *"Senin"* spesifik olarak neyi devreye soktuğunu netleştirmiyor. Şirketler inisiyatif alan adayları duymak ister. Mümkün olduğunca birinci tekil şahıs dili kullan: "Fark ettiğim için şunu önerdim...", "Benim buradaki sürecim şöyleydi...". Grup başarıları elbette ki değerlidir, ancak bireysel katkın ve analizin ${role} pozisyonuna uygunluğunu gösterecek şey yalnız senin iradendir. Kendini sürecin merkezine koyarak bir iki cümleyi revize et.`;
+    return `Metnin genel durumu anlatıyor ama *"Senin"* sürece kişisel olarak ne kattığını ve inisiyatifini yansıtmıyor. Şirketler edilgen takım oyuncularını değil, çözüm üretenleri işe alır. Lütfen "Biz yaptık" dilinden ziyade, "Ben şu kararı aldım, şunu önerdim" şeklinde birinci tekil şahıs diline geçiş yap ve kilit aksiyonunun altını çiz.`;
   }
 
-  return `Taslağın çok güçlü bir iskelete sahip. Gerekli verileri ve yaklaşımını net olarak yansıtıyor. Mülakata girmeden önce bunu sesli şekilde oku ve süre tut; idealinin 60-90 saniye arası olduğunu unutma. Eğer fazlası çıkarsa "Durum (Situation)" kısmından bir cümleyi eksilt. Son bir premium dokunuş: Cevabını noktalarken edindiğin bu güçlü kasın ${role} pozisyonunda sana nasıl fayda sağlayacağından bir kez daha bahsedersen çok daha profesyonel bir imza atmış olursun. Harika bir başlangıç!`;
+  return `Taslağın çok güçlü bir iskelete sahip, tebrikler! Gerekli verileri ve yaklaşımını (STAR) net olarak yansıtıyor. \n\nBir sonraki seviyeye geçmek için sana bir Mentör tavsiyesi: Cevabını noktalarken edindiğin bu güçlü kasın (örneğin kriz yönetimi) ${role} pozisyonunda şirket için neden çok değerli olacağını da tek cümleyle eklersen, mülakatçı üzerinde harika bir "profesyonel hazırbulunuşluk" izlenimi bırakırsın. Bunu sesli şekilde 90 saniye tutarak pratik yapmaya devam edebilirsin.`;
 }

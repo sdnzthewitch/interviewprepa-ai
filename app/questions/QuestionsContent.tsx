@@ -8,12 +8,12 @@ import QuestionCard from "@/components/questions/QuestionCard";
 import { getFilteredQuestions } from "@/lib/mock-data/questions";
 
 const categoryLabels: Record<string, string> = {
-  all:            "All",
-  behavioral:     "Behavioral",
-  technical:      "Technical",
-  "role-specific":"Role-specific",
-  situational:    "Situational",
-  motivation:     "Motivation",
+  all:            "Tümü",
+  behavioral:     "Davranışsal",
+  technical:      "Teknik",
+  "role-specific":"Role Özgü",
+  situational:    "Durumsal",
+  motivation:     "Motivasyon",
 };
 
 export default function QuestionsContent() {
@@ -58,12 +58,12 @@ export default function QuestionsContent() {
 
         {/* Header */}
         <div className="mb-8">
-          <p className="text-sm text-muted-foreground mb-1">Question bank</p>
+          <p className="text-sm text-muted-foreground mb-1">Soru bankası</p>
           <h1 className="text-[2rem] font-bold tracking-tight leading-tight">
-            Your recommended questions
+            Önerilen Sorularınız
           </h1>
           <p className="text-muted-foreground mt-1.5 text-sm">
-            {profile.interviewType} interview · {profile.targetRole || "your target role"} · {profile.sector}
+            {profile.interviewType} formatı · {profile.targetRole || "hedef rolünüz"} · {profile.sector}
           </p>
         </div>
 
@@ -71,19 +71,19 @@ export default function QuestionsContent() {
         <div className="flex items-center gap-5 mb-7 py-4 border-y border-border/50">
           <div>
             <p className="text-lg font-bold">{allQuestions.length}</p>
-            <p className="text-xs text-muted-foreground">questions</p>
+            <p className="text-xs text-muted-foreground">soru</p>
           </div>
           <div className="w-px h-8 bg-border" />
           <div>
             <p className="text-lg font-bold text-emerald-400">{practicedCount}</p>
-            <p className="text-xs text-muted-foreground">practiced</p>
+            <p className="text-xs text-muted-foreground">çözüldü</p>
           </div>
           <div className="w-px h-8 bg-border" />
           <div>
             <p className="text-lg font-bold text-indigo-400">
               {allQuestions.length > 0 ? Math.round((practicedCount / allQuestions.length) * 100) : 0}%
             </p>
-            <p className="text-xs text-muted-foreground">completion</p>
+            <p className="text-xs text-muted-foreground">tamamlandı</p>
           </div>
           {/* Progress bar */}
           <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden ml-2">
@@ -129,8 +129,8 @@ export default function QuestionsContent() {
 
           {filteredQuestions.length === 0 && (
             <div className="text-center py-20 text-muted-foreground">
-              <p className="text-base font-medium mb-1">No questions in this category</p>
-              <p className="text-sm">Switch to &apos;All&apos; to see everything.</p>
+              <p className="text-base font-medium mb-1">Bu kategoride soru bulunmuyor</p>
+              <p className="text-sm">Tüm soruları görmek için 'Tümü' sekmesine geçin.</p>
             </div>
           )}
         </div>

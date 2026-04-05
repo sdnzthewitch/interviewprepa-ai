@@ -11,6 +11,33 @@ interface ChatMessage {
   id: string;
   from: "coach" | "user";
   text: string;
+  isStreaming?: boolean;
+}
+
+function StreamedMessage({ text, isStreaming }: { text: string; isStreaming?: boolean }) {
+  const [displayed, setDisplayed] = useState("");
+
+  useEffect(() => {
+    if (!isStreaming) {
+      setDisplayed(text);
+      return;
+    }
+    
+    let i = 0;
+    const end = text.length;
+    // stream char by char
+    const interval = setInterval(() => {
+      setDisplayed(text.slice(0, i));
+      i += 2;
+      if (i > end) {
+        setDisplayed(text);
+        clearInterval(interval);
+      }
+    }, 10);
+    return () => clearInterval(interval);
+  }, [text, isStreaming]);
+
+  return <>{displayed}</>;
 }
 
 export default function CoachPage() {
@@ -61,11 +88,17 @@ export default function CoachPage() {
 
     setTimeout(() => {
       const coachResponse = getMockCoachFeedback("your question", input.trim(), profile);
-      const coachMsg: ChatMessage = { id: `coach-${Date.now()}`, from: "coach", text: coachResponse };
+      const coachMsg: ChatMessage = { id: `coach-${Date.now()}`, from: "coach", text: coachResponse, isStreaming: true };
+      
+      // Stop previous streams
+      setMessages((prev) => 
+        prev.map(m => m.from === "coach" ? { ...m, isStreaming: false } : m)
+      );
+
       setMessages((prev) => [...prev, coachMsg]);
       setIsThinking(false);
       incrementCoachInteraction();
-    }, 800);
+    }, 1200);
   }
 
   if (!profile) return null;
@@ -126,7 +159,11 @@ export default function CoachPage() {
                         : "bg-indigo-600/15 border border-indigo-500/20 text-foreground/85"
                     }`}
                   >
-                    {msg.text}
+                    {msg.from === "coach" ? (
+                      <StreamedMessage text={msg.text} isStreaming={msg.isStreaming} />
+                    ) : (
+                      msg.text
+                    )}
                   </div>
                 </div>
               ))}

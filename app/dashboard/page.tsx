@@ -54,12 +54,12 @@ export default function DashboardPage() {
   if (!profile) return null;
 
   const hour = new Date().getHours();
-  const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
+  const greeting = hour < 12 ? "Günaydın" : hour < 18 ? "İyi günler" : "İyi akşamlar";
   const completedCount = tasksWithState.filter((t) => t.completed).length;
 
   // Determine score display
   const scoreColor = readinessScore >= 70 ? "#22c55e" : readinessScore >= 40 ? "#6366f1" : "#f59e0b";
-  const scoreLabel = readinessScore >= 70 ? "Strong" : readinessScore >= 40 ? "In progress" : "Getting started";
+  const scoreLabel = readinessScore >= 70 ? "Çok İyi" : readinessScore >= 40 ? "Gelişiyor" : "Başlangıç";
 
   return (
     <AppShell>
@@ -70,11 +70,11 @@ export default function DashboardPage() {
           <p className="text-sm text-muted-foreground mb-1">{greeting}</p>
           <h1 className="text-[2rem] font-bold tracking-tight leading-tight">
             {profile.companyName
-              ? `Preparing for ${profile.companyName}`
-              : `Your preparation dashboard`}
+              ? `${profile.companyName} Mülakatı Hazırlığı`
+              : `Mülakat Hazırlık Paneli`}
           </h1>
           <p className="text-muted-foreground mt-1.5 text-sm">
-            {profile.targetRole || "Target role"} · {profile.interviewType} interview · {profile.sector}
+            {profile.targetRole || "Hedef rol"} · {profile.interviewType} formatı · {profile.sector}
           </p>
         </div>
 
@@ -103,10 +103,10 @@ export default function DashboardPage() {
               </text>
             </svg>
             <div>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium mb-1">Readiness</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium mb-1">Hazırlık Skoru</p>
               <p className="text-lg font-bold" style={{ color: scoreColor }}>{scoreLabel}</p>
               <p className="text-xs text-muted-foreground mt-0.5">
-                {readinessScore === 0 ? "Start tasks to build your score" : `${readinessScore}/100 points`}
+                {readinessScore === 0 ? "Puan toplamak için görevlere başla" : `${readinessScore}/100 Puan`}
               </p>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function DashboardPage() {
                 <div className="w-7 h-7 rounded-lg bg-violet-500/15 flex items-center justify-center flex-shrink-0">
                   <Lightbulb size={13} className="text-violet-400" />
                 </div>
-                <p className="text-xs font-semibold text-violet-400 uppercase tracking-wider">Coach insight</p>
+                <p className="text-xs font-semibold text-violet-400 uppercase tracking-wider">Koçun Tavsiyesi</p>
               </div>
               <p className="text-sm text-foreground/80 leading-relaxed line-clamp-4">
                 {coachInsight}
@@ -129,7 +129,7 @@ export default function DashboardPage() {
                 id="dashboard-coach-link"
                 className="inline-flex items-center gap-1.5 text-xs text-violet-400 hover:text-violet-300 font-medium mt-3 transition-colors"
               >
-                Read full advice <ArrowRight size={11} />
+                Tuzakları ve ipuçlarını öğren <ArrowRight size={11} />
               </Link>
             </div>
           </div>
@@ -139,9 +139,9 @@ export default function DashboardPage() {
         <div className="mb-6">
           <div className="flex items-center justify-between mb-3">
             <div>
-              <h2 className="text-base font-semibold">Today's plan</h2>
+              <h2 className="text-base font-semibold">Günün Planı</h2>
               <p className="text-xs text-muted-foreground mt-0.5">
-                {completedCount} of {tasksWithState.length} tasks done
+                {tasksWithState.length} görevden {completedCount} tanesi tamamlandı
               </p>
             </div>
             {/* Progress bar */}
@@ -163,13 +163,13 @@ export default function DashboardPage() {
         {/* ── Questions preview ─────────────────────────── */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-base font-semibold">Priority questions</h2>
+            <h2 className="text-base font-semibold">Öncelikli Sorular</h2>
             <Link
               href="/questions"
               id="dashboard-questions-link"
               className="flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
             >
-              See all <ArrowRight size={11} />
+              Tümünü Gör <ArrowRight size={11} />
             </Link>
           </div>
 
@@ -183,7 +183,7 @@ export default function DashboardPage() {
         {/* ── Progress insights ─────────────────────────── */}
         {insights.length > 0 && (
           <div>
-            <h2 className="text-base font-semibold mb-3">Progress signals</h2>
+            <h2 className="text-base font-semibold mb-3">Gelişim Sinyalleri</h2>
             <div className="space-y-2">
               {insights.map((insight) => (
                 <InsightRow key={insight.id} insight={insight} />
@@ -199,9 +199,9 @@ export default function DashboardPage() {
 // ── Sub-components (co-located for simplicity) ────────────────────────────────
 
 const priorityConfig = {
-  high:   { label: "Priority", color: "text-rose-400 bg-rose-400/10" },
-  medium: { label: "Focus",    color: "text-amber-400 bg-amber-400/10" },
-  low:    { label: "Optional", color: "text-muted-foreground bg-white/5" },
+  high:   { label: "Öncelikli", color: "text-rose-400 bg-rose-400/10" },
+  medium: { label: "Odaklan",    color: "text-amber-400 bg-amber-400/10" },
+  low:    { label: "İsteğe Bağlı", color: "text-muted-foreground bg-white/5" },
 };
 
 function TaskRow({ task, onToggle }: { task: PrepTask; onToggle: (id: string) => void }) {
@@ -234,7 +234,7 @@ function TaskRow({ task, onToggle }: { task: PrepTask; onToggle: (id: string) =>
           </div>
           <p className="text-xs text-muted-foreground leading-relaxed">{task.description}</p>
           <span className="inline-flex items-center gap-1 mt-1.5 text-[10px] text-muted-foreground/50">
-            <Clock size={9} /> {task.estimatedMinutes} min
+            <Clock size={9} /> {task.estimatedMinutes} dk.
           </span>
         </div>
       </div>

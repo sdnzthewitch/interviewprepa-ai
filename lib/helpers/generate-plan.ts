@@ -24,11 +24,11 @@ export function generateDailyPlan(
     {
       id: "task-research",
       title: profile.companyName
-        ? `Research ${profile.companyName}`
-        : "Research your target company",
+        ? `${profile.companyName} hakkında araştırma yap`
+        : "Hedef şirketin hakkında araştırma yap",
       description: profile.companyName
-        ? `Spend 20 min on ${profile.companyName}'s product, recent news, and values.`
-        : "Review the company's mission, recent press, and culture page. Write 3 things you find interesting.",
+        ? `${profile.companyName} şirketinin ürünleri, son haberleri ve vizyonu için 20 dakika ayır.`
+        : "Şirketin misyonunu, haberlerini ve kültür sayfasını incele. İlgi çekici bulduğun 3 maddeyi not et.",
       estimatedMinutes: 20,
       category: "research",
       priority: "high",
@@ -36,9 +36,9 @@ export function generateDailyPlan(
     },
     {
       id: "task-behavioral",
-      title: "Practice 2 behavioral questions",
+      title: "2 davranışsal (behavioral) soruyu pratik et",
       description:
-        "Pick 2 behavioral questions from your recommended list. Draft answers using STAR format.",
+        "Önerilenler listesinden 2 davranışsal soru seç. STAR formatını kullanarak cevap taslağı oluştur.",
       estimatedMinutes: isUrgent ? 25 : 30,
       category: "behavioral",
       priority: "high",
@@ -46,9 +46,9 @@ export function generateDailyPlan(
     },
     {
       id: "task-coach",
-      title: "Review AI coach feedback",
+      title: "AI Koçun geri bildirimini incele",
       description:
-        "Open the AI coach, share one of your answers, and apply the feedback to improve it.",
+        "AI Koç'u aç, taslak cevaplarından birini gönder ve aldığı geri bildirime göre cevabını geliştir.",
       estimatedMinutes: 15,
       category: "planning",
       priority: "medium",
@@ -56,9 +56,9 @@ export function generateDailyPlan(
     },
     {
       id: "task-motivation",
-      title: "Draft your 'Why this company' answer",
+      title: "'Neden bu şirket?' sorusuna taslak hazırla",
       description:
-        "Write a 60-second answer to 'Why do you want to work here?' that references something specific.",
+        "Spesifik bir detaya değinerek 'Neden burada çalışmak istiyorsun?' sorusuna 60 saniyelik bir yanıt yaz.",
       estimatedMinutes: 20,
       category: "motivation",
       priority: isUrgent ? "high" : "medium",
@@ -66,9 +66,9 @@ export function generateDailyPlan(
     },
     {
       id: "task-situational",
-      title: "Prepare 1 situational scenario",
+      title: "1 spesifik kriz veya durumsal senaryo hazırla",
       description:
-        "Think of a real situation from your experience that demonstrates problem-solving. Write it down concisely.",
+        "Geçmiş deneyimlerinden problem çözme yeteneğini açıkça kanıtlayan gerçek bir anıyı düşün ve özetle.",
       estimatedMinutes: 20,
       category: "situational",
       priority: "medium",
@@ -120,7 +120,7 @@ export function generateProgressInsights(
       id: "consistency",
       type: "positive",
       message:
-        "Your preparation consistency is improving. Three sessions in a row is a strong habit.",
+        "Hazırlık istikrarın harika gidiyor. Üst üste üç oturum yapmak güçlü bir alışkanlıktır.",
     });
   }
 
@@ -129,13 +129,13 @@ export function generateProgressInsights(
       id: "no-answers",
       type: "suggestion",
       message:
-        "You haven't drafted any answers yet. Start with one behavioral question — even a rough draft helps solidify your thinking.",
+        "Henüz bir cevap taslağı oluşturmadın. Bir davranışsal soruyla başla — kaba bir taslak bile zihnini toparlamaya yardımcı olur.",
     });
   } else if (savedCount > 0 && profile.interviewType === "behavioral") {
     insights.push({
       id: "behavioral-good",
       type: "positive",
-      message: `You've saved ${savedCount} answer${savedCount > 1 ? "s" : ""}. For a behavioral interview, every written draft you practice builds muscle memory.`,
+      message: `Şu ana kadar ${savedCount} cevap kaydettin. Davranışsal mülakatlarda kas hafızası geliştirmek için her yazılı taslak çok değerlidir.`,
     });
   }
 
@@ -147,7 +147,7 @@ export function generateProgressInsights(
       id: "focus-behavioral",
       type: "warning",
       message:
-        "You're focusing on reading over practicing. For behavioral interviews, practicing out loud matters more than reading more questions.",
+        "Pratik yapmaktan ziyade sadece okumaya odaklanmış görünüyorsun. Davranışsal mülakatlarda sesli pratik yapmak, daha fazla soru okumaktan çok daha etkilidir.",
     });
   }
 
@@ -159,7 +159,7 @@ export function generateProgressInsights(
       id: "english-length",
       type: "suggestion",
       message:
-        "Your English preparation is growing, but keep your answers shorter — aim for 90 seconds max per answer to stay clear and confident.",
+        "İngilizce seviyeni göz önünde bulundurursak; net ve kendinden emin iletişim kurabilmek için cevaplarını nispeten kısa tutmalısın — her bir cevap için maks 90 saniye hedefle.",
     });
   }
 
@@ -168,7 +168,7 @@ export function generateProgressInsights(
       id: "urgency-warning",
       type: "warning",
       message:
-        "You have limited time before your interview. Prioritise the top two tasks in your daily plan and skip anything marked optional.",
+        "Mülakatın için zamanın çok kısıtlı. Günlük planındaki ilk iki göreve öncelik ver ve isteğe bağlı olanları es geç.",
     });
   }
 

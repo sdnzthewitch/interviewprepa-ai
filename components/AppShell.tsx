@@ -12,9 +12,9 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/questions", label: "Questions", icon: BookOpen },
-  { href: "/coach", label: "AI Coach", icon: MessageSquare },
+  { href: "/dashboard", label: "Panel", icon: LayoutDashboard },
+  { href: "/questions", label: "Soru Bankası", icon: BookOpen },
+  { href: "/coach", label: "AI Koç", icon: MessageSquare },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -38,9 +38,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         {/* User context */}
         {profile && (
           <div className="px-4 py-4 border-b border-border">
-            <p className="text-xs text-muted-foreground mb-0.5">Preparing for</p>
+            <p className="text-xs text-muted-foreground mb-0.5">Hazırlanılan Rol</p>
             <p className="text-sm font-medium text-foreground truncate">
-              {profile.targetRole || "Your target role"}
+              {profile.targetRole || "Hedef rolünüz"}
             </p>
             <p className="text-xs text-muted-foreground truncate mt-0.5">
               {profile.sector} · {profile.interviewType}
@@ -77,13 +77,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors px-3 py-2 rounded-lg hover:bg-white/5"
           >
             <ArrowLeft size={13} />
-            Back to home
+            Anasayfaya Dön
           </Link>
           <button
             onClick={resetProgress}
             className="w-full text-left flex items-center gap-2 text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors px-3 py-2 rounded-lg hover:bg-white/5"
           >
-            Restart onboarding
+            Sıfırla ve Baştan Başla
           </button>
         </div>
       </aside>
