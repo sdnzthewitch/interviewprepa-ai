@@ -28,19 +28,19 @@ export default function CoachPage() {
 
   useEffect(() => {
     if (!profile) return;
-    const company = profile.companyName ? ` at ${profile.companyName}` : "";
+    const company = profile.companyName ? ` (${profile.companyName})` : "";
     const urgencyNote =
       profile.urgency === "this-week"
-        ? " You have the interview this week, so I'll keep advice focused and direct."
+        ? " Mülakatın bu hafta olduğu için tavsiyelerimi hedefe yönelik ve doğrudan aktaracağım."
         : profile.urgency === "this-month"
-        ? " You have a few weeks — enough time to build real depth if you're deliberate about it."
+        ? " Önünde birkaç haftan var — stratejik ilerlersek cevaplarına profesyonel bir derinlik katmak için harika bir süre."
         : "";
 
     setMessages([
       {
         id: "intro",
         from: "coach",
-        text: `Hi — I'm your interview coach. You're preparing for a ${profile.interviewType} interview as a ${profile.targetRole || "candidate"} in ${profile.sector}${company}.${urgencyNote}\n\nYou can paste a draft answer and I'll give you specific, structured feedback — or ask me anything about how to prepare for your interview. What would you like to work on?`,
+        text: `Merhaba, ben senin yapay zeka mülakat koçunum. ${profile.sector}${company} sektöründe bir ${profile.targetRole || "aday"} olarak ${profile.interviewType} formatındaki mülakatına sürveyanlık edeceğim.${urgencyNote}\n\nBuraya herhangi bir mülakat sorusuna hazırladığın cevabı yapıştırarak benden profesyonel bir analiz ve geri bildirim alabilirsin. Ya da doğrudan mülakatla ilgili aklına takılanları sorabilirsin. Bugün ne üzerine çalışmak istersin?`,
       },
     ]);
   }, [profile]);
@@ -76,15 +76,14 @@ export default function CoachPage() {
 
         {/* Header */}
         <div className="mb-8">
-          <p className="text-sm text-muted-foreground mb-1">AI Coach</p>
-          <h1 className="text-[2rem] font-bold tracking-tight leading-tight">Your interview coach</h1>
+          <p className="text-sm text-muted-foreground mb-1">AI Koç</p>
+          <h1 className="text-[2rem] font-bold tracking-tight leading-tight">Mülakat Koçun</h1>
           <p className="text-muted-foreground mt-1.5 text-sm">
-            Advice adapted for a{" "}
+            <span className="text-foreground font-medium">{profile.sector}</span> sektöründeki bir{" "}
             <span className="text-foreground font-medium">{profile.interviewType}</span>{" "}
-            interview in{" "}
-            <span className="text-foreground font-medium">{profile.sector}</span>
+            mülakatı için yapılandırıldı
             {profile.companyName && (
-              <> at <span className="text-foreground font-medium">{profile.companyName}</span></>
+              <> (<span className="text-foreground font-medium">{profile.companyName}</span>)</>
             )}
           </p>
         </div>
@@ -100,8 +99,8 @@ export default function CoachPage() {
                 <MessageSquare size={14} className="text-violet-400" />
               </div>
               <div>
-                <p className="text-sm font-semibold">Coach</p>
-                <p className="text-[10px] text-muted-foreground">Responds to your questions and drafts</p>
+                <p className="text-sm font-semibold">Mülakat Koçu</p>
+                <p className="text-[10px] text-muted-foreground">Cevaplarını analiz eder ve stratejini güçlendirir</p>
               </div>
             </div>
 
@@ -163,7 +162,7 @@ export default function CoachPage() {
                       handleSend();
                     }
                   }}
-                  placeholder="Paste a draft answer or ask a question — e.g. 'How do I structure a STAR answer?'"
+                  placeholder="Cevap taslağını buraya yapıştır veya bir soru sor — örn: 'Bu durumu STAR tekniğiyle nasıl anlatabilirim?'"
                   className="flex-1 px-4 py-3 bg-card border border-border rounded-xl text-sm placeholder:text-muted-foreground/50 resize-none focus:outline-none focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/20 transition-colors min-h-[52px] max-h-[140px] leading-relaxed"
                   rows={2}
                 />
@@ -177,7 +176,7 @@ export default function CoachPage() {
                 </button>
               </div>
               <p className="text-[10px] text-muted-foreground/50 mt-2 pl-1">
-                Shift+Enter for new line · Enter to send
+                Yeni satır için Shift+Enter · Göndermek için Enter
               </p>
             </div>
           </div>
@@ -186,8 +185,8 @@ export default function CoachPage() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Lightbulb size={13} className="text-violet-400" />
-              <p className="text-sm font-semibold">Coaching tips</p>
-              <span className="text-[10px] text-muted-foreground ml-auto">tailored to your profile</span>
+              <p className="text-sm font-semibold">Koçluk İpuçları</p>
+              <span className="text-[10px] text-muted-foreground ml-auto">profiline özel tasarlandı</span>
             </div>
 
             <div className="space-y-2.5">
@@ -219,7 +218,7 @@ export default function CoachPage() {
 
             {/* Tip about the chat */}
             <p className="text-[11px] text-muted-foreground/50 mt-5 px-1 leading-relaxed">
-              Paste any draft answer into the chat to get structured feedback on length, clarity, and impact.
+              Mülakat sorularına hazırladığın cevap taslaklarını sohbet paneline yapıştırarak uzunluk, netlik ve bırakacağı etki (impact) açısından detaylı bir geri bildirim alabilirsin.
             </p>
           </div>
         </div>
