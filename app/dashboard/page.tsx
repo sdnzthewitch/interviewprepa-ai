@@ -37,7 +37,7 @@ export default function DashboardPage() {
   );
 
   const insights = useMemo(
-    () => profile ? generateProgressInsights(profile, progress, tasks.length) : [],
+    () => profile ? generateProgressInsights(profile, progress) : [],
     [profile, progress]
   );
 

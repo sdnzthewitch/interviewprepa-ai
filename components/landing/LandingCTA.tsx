@@ -30,7 +30,7 @@ export default function LandingCTA() {
               id="landing-bottom-cta"
               className="group inline-flex items-center gap-2 px-10 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-2xl transition-all duration-200 shadow-xl shadow-indigo-600/30 hover:scale-[1.02]"
             >
-              Get started — it's free
+              Get started — it&apos;s free
               <ArrowRight
                 size={18}
                 className="group-hover:translate-x-0.5 transition-transform"

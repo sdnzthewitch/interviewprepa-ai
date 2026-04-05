@@ -130,7 +130,7 @@ export default function QuestionsContent() {
           {filteredQuestions.length === 0 && (
             <div className="text-center py-20 text-muted-foreground">
               <p className="text-base font-medium mb-1">Bu kategoride soru bulunmuyor</p>
-              <p className="text-sm">Tüm soruları görmek için 'Tümü' sekmesine geçin.</p>
+              <p className="text-sm">Tüm soruları görmek için &apos;Tümü&apos; sekmesine geçin.</p>
             </div>
           )}
         </div>

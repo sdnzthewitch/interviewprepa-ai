@@ -22,7 +22,7 @@ export default function CoachInsights({ insight }: CoachInsightsProps) {
             <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">
               AI coach insight
             </p>
-            <p className="text-xs text-violet-400 font-medium">Today's focus</p>
+            <p className="text-xs text-violet-400 font-medium">Today&apos;s focus</p>
           </div>
         </div>
 

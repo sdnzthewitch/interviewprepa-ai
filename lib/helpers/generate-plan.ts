@@ -107,8 +107,7 @@ export function calculateReadinessScore(
 
 export function generateProgressInsights(
   profile: UserProfile,
-  progress: ProgressState,
-  totalTasks: number
+  progress: ProgressState
 ): ProgressInsight[] {
   const insights: ProgressInsight[] = [];
 

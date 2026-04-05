@@ -23,7 +23,7 @@ export default function TodayPlan({ tasks }: TodayPlanProps) {
       <div className="flex items-center justify-between mb-6">
         <div>
           <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium mb-0.5">
-            Today's plan
+            Today&apos;s plan
           </p>
           <h3 className="font-semibold text-lg">
             {completedCount} / {tasks.length} tasks completed

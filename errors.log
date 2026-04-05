@@ -1,0 +1,49 @@
+
+C:\Users\DELL\.gemini\antigravity\scratch\interview-prep-ai\app\coach\page.tsx
+  22:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\DELL\.gemini\antigravity\scratch\interview-prep-ai\app\coach\page.tsx:22:7
+  20 |   useEffect(() => {
+  21 |     if (!isStreaming) {
+> 22 |       setDisplayed(text);
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  23 |       return;
+  24 |     }
+  25 |       react-hooks/set-state-in-effect
+  66:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\DELL\.gemini\antigravity\scratch\interview-prep-ai\app\coach\page.tsx:66:5
+  64 |         : "";
+  65 |
+> 66 |     setMessages([
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  67 |       {
+  68 |         id: "intro",
+  69 |         from: "coach",                react-hooks/set-state-in-effect
+
+C:\Users\DELL\.gemini\antigravity\scratch\interview-prep-ai\components\dashboard\CoachInsights.tsx
+  25:69  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\DELL\.gemini\antigravity\scratch\interview-prep-ai\components\dashboard\TodayPlan.tsx
+  26:18  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\DELL\.gemini\antigravity\scratch\interview-prep-ai\components\landing\LandingCTA.tsx
+  33:31  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\DELL\.gemini\antigravity\scratch\interview-prep-ai\components\landing\WhoIsItFor.tsx
+  39:19  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+??? 6 problems (6 errors, 0 warnings)
+

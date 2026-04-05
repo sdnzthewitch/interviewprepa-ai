@@ -19,7 +19,7 @@ function StreamedMessage({ text, isStreaming }: { text: string; isStreaming?: bo
 
   useEffect(() => {
     if (!isStreaming) {
-      setDisplayed(text);
+      setTimeout(() => setDisplayed(text), 0);
       return;
     }
     
@@ -63,13 +63,15 @@ export default function CoachPage() {
         ? " Önünde birkaç haftan var — stratejik ilerlersek cevaplarına profesyonel bir derinlik katmak için harika bir süre."
         : "";
 
-    setMessages([
-      {
-        id: "intro",
-        from: "coach",
-        text: `Merhaba, ben senin yapay zeka mülakat koçunum. ${profile.sector}${company} sektöründe bir ${profile.targetRole || "aday"} olarak ${profile.interviewType} formatındaki mülakatına sürveyanlık edeceğim.${urgencyNote}\n\nBuraya herhangi bir mülakat sorusuna hazırladığın cevabı yapıştırarak benden profesyonel bir analiz ve geri bildirim alabilirsin. Ya da doğrudan mülakatla ilgili aklına takılanları sorabilirsin. Bugün ne üzerine çalışmak istersin?`,
-      },
-    ]);
+    setTimeout(() => {
+      setMessages([
+        {
+          id: "intro",
+          from: "coach",
+          text: `Merhaba, ben senin yapay zeka mülakat koçunum. ${profile.sector}${company} sektöründe bir ${profile.targetRole || "aday"} olarak ${profile.interviewType} formatındaki mülakatına sürveyanlık edeceğim.${urgencyNote}\n\nBuraya herhangi bir mülakat sorusuna hazırladığın cevabı yapıştırarak benden profesyonel bir analiz ve geri bildirim alabilirsin. Ya da doğrudan mülakatla ilgili aklına takılanları sorabilirsin. Bugün ne üzerine çalışmak istersin?`,
+        },
+      ]);
+    }, 0);
   }, [profile]);
 
   useEffect(() => {

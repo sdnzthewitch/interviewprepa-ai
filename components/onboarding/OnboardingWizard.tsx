@@ -316,7 +316,7 @@ export default function OnboardingWizard() {
               />
               {step.optional && (
                 <p className="mt-2 text-xs text-muted-foreground">
-                  Bu alan isteğe bağlıdır. Doğrudan 'Devam Et'e tıklayıp geçebilirsiniz.
+                  Bu alan isteğe bağlıdır. Doğrudan &apos;Devam Et&apos;e tıklayıp geçebilirsiniz.
                 </p>
               )}
             </div>

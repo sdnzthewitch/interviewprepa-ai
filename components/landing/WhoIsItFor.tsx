@@ -36,7 +36,7 @@ export default function WhoIsItFor() {
         {/* Header */}
         <div className="text-center mb-14">
           <p className="text-sm font-semibold text-indigo-400 uppercase tracking-widest mb-3">
-            Who it's for
+            Who it&apos;s for
           </p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
             Built for where you are
